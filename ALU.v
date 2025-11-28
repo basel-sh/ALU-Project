@@ -1,0 +1,117 @@
+module ALU#(parameter Width=16)(
+input   [Width-1:0] A,B,
+input        Cin,
+input  [4:0] F,                 // F[4:3] -> block select, lower bits -> sub-op
+output reg  [Width-1:0] Out,
+output reg  [5:0] Status
+);
+// Registers for the Flags Used
+reg        C,Z,N,V,P,Af,Cout;
+
+// Arithmetic Wires
+wire [Width-1:0] arith_out;
+wire             arith_C,arith_Z,arith_N,arith_V,arith_P,arith_Af;
+
+// Logic Wires
+wire [Width-1:0] logic_out;
+wire             logic_Z,logic_N,logic_P;
+
+// Shift Wires
+wire [Width-1:0] shift_out;
+wire             shift_C,shift_Z,shift_N,shift_P;
+
+// ================== Instantiations ==================
+
+// Arithmetic block (F[2:0] from ALU F)
+Arithmetic#(.Width(Width)) U_ARITH (
+    .A(A),
+    .B(B),
+    .Cin(Cin),
+    .F(F[2:0]),
+    .Out(arith_out),
+    .Cout(),          // not used
+    .Status(),        // not used
+    .C(arith_C),
+    .Z(arith_Z),
+    .N(arith_N),
+    .V(arith_V),
+    .P(arith_P),
+    .Af(arith_Af)
+);
+
+// Logic block (F[1:0] from ALU F)
+Logic#(.Width(Width)) U_LOGIC (
+    .A(A),
+    .B(B),
+    .F(F[2:0]),
+    .Z(logic_Z),
+    .N(logic_N),
+    .P(logic_P),
+    .Out(logic_out)
+);
+
+// Shift block (F[2:0] from ALU F)
+Shift#(.Width(Width)) U_SHIFT (
+    .A(A),
+    .F(F[2:0]),
+    .Out(shift_out),
+    .C(shift_C),
+    .Z(shift_Z),
+    .N(shift_N),
+    .P(shift_P)
+);
+
+// ================== ALU Mux Logic ==================
+
+always@(*) begin
+    case (F[4:3])
+        2'b00: begin
+            // Arithmetic operations
+            Out = arith_out;
+            C   = arith_C;
+            Z   = arith_Z;
+            N   = arith_N;
+            V   = arith_V;
+            P   = arith_P;
+            Af  = arith_Af;
+        end
+
+        2'b01: begin
+            // Logic operations
+            Out = logic_out;
+            C   = 1'b0;
+            Z   = logic_Z;
+            N   = logic_N;
+            V   = 1'b0;
+            P   = logic_P;
+            Af  = 1'b0;
+        end
+
+        2'b10: begin
+            // Shift operations
+            Out = shift_out;
+            C   = shift_C;
+            Z   = shift_Z;
+            N   = shift_N;
+            V   = 1'b0;
+            P   = shift_P;
+            Af  = 1'b0;
+        end
+
+        default: begin
+            // Unused opcodes ------> everything zero
+            Out = {Width{1'b0}};
+            C   = 1'b0;
+            Z   = 1'b0;
+            N   = 1'b0;
+            V   = 1'b0;
+            P   = 1'b0;
+            Af  = 1'b0;
+        end
+    endcase
+
+    Cout   = C;
+    Status = {C,Z,N,V,P,Af};
+end
+
+endmodule

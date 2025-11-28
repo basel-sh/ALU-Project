@@ -1,0 +1,5 @@
+vlib work
+vlog ALU.v ALU_TB.v
+vsim -voptargs=+acc work.ALU_tb
+add wave -r /*
+run -all

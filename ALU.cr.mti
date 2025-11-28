@@ -1,0 +1,29 @@
+{C:/Users/Eng.Basel/Desktop/MicroProcessor Project/Arithmetic.v} {1 {vlog -work work -stats=none {C:/Users/Eng.Basel/Desktop/MicroProcessor Project/Arithmetic.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Arithmetic
+
+Top level modules:
+	Arithmetic
+
+} {} {}} {C:/Users/Eng.Basel/Desktop/MicroProcessor Project/Shift.v} {1 {vlog -work work -stats=none {C:/Users/Eng.Basel/Desktop/MicroProcessor Project/Shift.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Shift
+
+Top level modules:
+	Shift
+
+} {} {}} {C:/Users/Eng.Basel/Desktop/MicroProcessor Project/ALU.v} {1 {vlog -work work -stats=none {C:/Users/Eng.Basel/Desktop/MicroProcessor Project/ALU.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module ALU
+
+Top level modules:
+	ALU
+
+} {} {}} {C:/Users/Eng.Basel/Desktop/MicroProcessor Project/Logic.v} {1 {vlog -work work -stats=none {C:/Users/Eng.Basel/Desktop/MicroProcessor Project/Logic.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module Logic
+
+Top level modules:
+	Logic
+
+} {} {}}

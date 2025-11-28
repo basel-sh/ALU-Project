@@ -1,0 +1,80 @@
+module Arithmetic
+#(parameter Width=16)(
+input signed [Width-1:0] A,B,
+input Cin,
+input [2:0] F,
+output reg [Width-1:0] Out,
+output reg Cout,
+output reg [5:0] Status,
+output reg C,Z,N,V,P,Af
+);
+
+reg signed [Width:0] temp;
+reg aux_carry;
+
+always @(*) begin
+
+case(F)
+3'b001:
+begin
+temp=A+1;
+Out=temp[Width-1:0];
+Cout=temp[Width];
+end
+//////////////////////////////////
+3'b011:
+begin
+temp=A-1;
+Out=temp[Width-1:0];
+Cout=temp[Width];
+end
+//////////////////////////////////
+3'b100:
+begin
+temp=A+B;
+Out=temp[Width-1:0];
+Cout=temp[Width];
+end
+//////////////////////////////////
+3'b101:
+begin
+temp=A+B+Cin;
+Out=temp[Width-1:0];
+Cout=temp[Width];
+end
+//////////////////////////////////
+3'b110:
+begin
+temp=A-B;
+Out=temp[Width-1:0];
+Cout=temp[Width];
+end
+//////////////////////////////////
+3'b111:
+begin
+temp=A-B-Cin;
+Out=temp[Width-1:0];
+Cout=temp[Width];
+end
+//////////////////////////////////
+default:
+begin
+Out=0;
+Cout=0;
+end
+//////////////////////////////////
+endcase
+
+C=Cout;                    // Carry flag
+Z= (Out=={Width{1'b0}});    // Zero flag
+N= Out[Width-1];            // Negative flag (MSB for signed)
+V= (     ~(A[Width-1]^B[Width-1])    &     ( A[Width-1]^Out[Width-1])  );   // Over Flow Flag
+P= ~^Out;                   // Parity flag (1 if even number of 1s)
+Af= ( (A[3:0]+B[3:0]+Cin)>4'hF ); // Aux flag
+
+
+// Concatenate
+Status={C,Z,N,V,P,A};
+
+end
+endmodule
