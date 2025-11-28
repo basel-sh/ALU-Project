@@ -1,10 +1,3 @@
-module Logic#(parameter Width = 16)(
-input [Width-1:0] A,B,
-input [2:0] F,
-output reg Z,N,P,
-output reg [Width-1:0] Out
-);
-
 module Logic
 #(parameter Width = 16)
 (
@@ -61,3 +54,4 @@ always@(*) begin
 
 end
 endmodule
+
