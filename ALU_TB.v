@@ -1,8 +1,9 @@
 `timescale 1ns/1ps
 
 
-module ALU_tb#(parameter Width = 16);
-  reg[Width-1:0] A,B;
+module ALU_tb
+#(parameter Width = 16);
+  reg [Width-1:0] A,B;
   reg [4:0] F;
   reg Cin;
   wire[Width-1:0] Out;
@@ -21,8 +22,8 @@ ALU#(.Width(Width)) U_ALU (
 
 initial
 begin
-        $display(" time  |             A            |           B           |Cin|   F   |           Out           | Status");
-        $display("------------------------------------------------------------------------------------------------------------");
+        $display(" time    |        A        |        B        | Cin |   F   |       Out       | Status");
+        $display("----------------------------------------------------------------------------------------");
 	F   = 5'b00000;
 	repeat(100)
 
@@ -30,10 +31,11 @@ begin
 	A   = $random;
 	B   = $random;
 	Cin = 1;        //$random;
-	#10;
-        $display("%5t  | %b  %d  %b  %d  %b  %b  | %b  %d  %b",
-                $time, A, A, B, B, Cin, F, Out, Out, Status);
+	#1
+        $display("%5t  | %b  %b   %b  %b  | %b   %b",
+                $time, A, B, Cin, F, Out, Status);
 	F = F + 1;
+	#10;
 
 	end
 

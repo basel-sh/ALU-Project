@@ -1,5 +1,5 @@
 module ALU#(parameter Width=16)(
-input  [Width-1:0] A,B,
+input   [Width-1:0] A,B,
 input        Cin,
 input  [4:0] F,                 // F[4:3] -> block select, lower bits -> sub-op
 output reg  [Width-1:0] Out,
@@ -43,7 +43,7 @@ Arithmetic#(.Width(Width)) U_ARITH (
 Logic#(.Width(Width)) U_LOGIC (
     .A(A),
     .B(B),
-    .F(F[1:0]),
+    .F(F[2:0]),
     .Z(logic_Z),
     .N(logic_N),
     .P(logic_P),
@@ -115,4 +115,3 @@ always@(*) begin
 end
 
 endmodule
-

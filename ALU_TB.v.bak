@@ -30,11 +30,10 @@ begin
 	A   = $random;
 	B   = $random;
 	Cin = 1;        //$random;
-	#10
+	#10;
         $display("%5t  | %b  %d  %b  %d  %b  %b  | %b  %d  %b",
                 $time, A, A, B, B, Cin, F, Out, Out, Status);
 	F = F + 1;
-	#10;
 
 	end
 

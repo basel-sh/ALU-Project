@@ -1,67 +1,62 @@
-module Shift #(parameter Width=16)
+module Shift 
+#(parameter Width=16)
 (
-input  [Width-1:0] A,
-input  [2:0] F,
-output reg C,Z,N,P,
-output reg [Width-1:0] Out
+	input  	   [Width-1:0] A,
+	input      [2:0] F,
+	output reg C,Z,N,P,
+	output reg [Width-1:0] Out
 );
+
 reg Cshift;
 
-always @(*) begin
-    
-
-    case (F)
-        3'b000: begin
+always @(*) 
+begin
+	case (F)
+        3'b000:					//SHL
 	    {C,Out} = {A,1'b0};
-        end
-
-        3'b001: begin
-	    {Out,C} = {1'b0,A}; 
-        end
-
-        3'b010: begin
+////////////////////////////////////////////////////////////
+        3'b001:					//SHR
+	    {Out,C} = {1'b0,A};
+////////////////////////////////////////////////////////////
+        3'b010:					//SAL
 	    {C,Out} = {A,1'b0};
-        end
-
-        3'b011: begin
+////////////////////////////////////////////////////////////
+        3'b011:					//SAR
 	    {Out,C} = {A[Width-1],A};
-        end
-
-        3'b100: begin
+////////////////////////////////////////////////////////////
+        3'b100:					//ROL
             {C,Out} = {A,A[Width-1]};
-        end
-
-        3'b101: begin
+////////////////////////////////////////////////////////////
+        3'b101:					//ROR
 	    {Out,C} = {A[0],A};
-        end
-
-	3'b110:
+////////////////////////////////////////////////////////////
+	3'b110:					//RCL
 	begin
-
-	 Cshift = C;
-	{C,Out} = {A,Cshift};
-	end
-
-	3'b111:
+	 	Cshift = C;
+		{C,Out} = {A,Cshift};
+	end      
+////////////////////////////////////////////////////////////
+	3'b111:					//RCR
 	begin
-
-	 Cshift = C;
-	{Out,C} = {Cshift,A};
-	end
-
-        default: begin
+	 	Cshift = C;
+		{Out,C} = {Cshift,A};
+	end        
+////////////////////////////////////////////////////////////                  
+        default: 
+	begin
             Out = {Width{1'b0}};
             C   = 1'b0;
-	    Z = 1'b0;
-   	    N = 1'b0;
-    	    P = 1'b0;
+	    Z 	= 1'b0;
+   	    N 	= 1'b0;
+    	    P 	= 1'b0;
         end
-    endcase
+////////////////////////////////////////////////////////////
+        endcase
 
 
-	Z = ~|Out;
-    	N = Out[Width-1];
-    	P = ~^Out;
+	Z = ~|Out;		//Zero Flag
+    	N = Out[Width-1];	//Negative Flag
+    	P = ~^Out;		//Parity Flag
     
 end
 

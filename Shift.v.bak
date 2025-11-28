@@ -12,60 +12,43 @@ always @(*) begin
 
     case (F)
         3'b000: begin
-            /*C   = A[Width-1];
-            Out = A << 1;*/
 	    {C,Out} = {A,1'b0};
         end
 
         3'b001: begin
-            /*C   = A[0];
-            Out = A >> 1;  */           // arithmetic right because A is signed
 	    {Out,C} = {1'b0,A}; 
         end
 
         3'b010: begin
-            //C   = A[Width-1];
-            //Out = A << 1;
 	    {C,Out} = {A,1'b0};
         end
 
         3'b011: begin
-            //C   = A[0];
-            //Out = A >> 1;
-            //Out[Width-1] = A[Width-1]; // ensure sign bit kept (ASR)
 	    {Out,C} = {A[Width-1],A};
         end
 
         3'b100: begin
-            //C   = A[Width-1];
-            //Out = A << 1;
             {C,Out} = {A,A[Width-1]};
         end
 
         3'b101: begin
-            //C   = A[0];
-            //Out = A >> 1;
-            //Out[Width-1] = C;         // ROR
 	    {Out,C} = {A[0],A};
         end
 
 	3'b110:
 	begin
-	//Out= A << 1;
-	//Out[0]= C;
-	//C= A[Width-1];
+
 	 Cshift = C;
 	{C,Out} = {A,Cshift};
-	end                           // RCL
+	end
 
 	3'b111:
 	begin
-	//Out= A >> 1;
-	//Out[Width-1]= C;
-	//C= A[0];
+
 	 Cshift = C;
 	{Out,C} = {Cshift,A};
-	end                           // RCR
+	end
+
         default: begin
             Out = {Width{1'b0}};
             C   = 1'b0;

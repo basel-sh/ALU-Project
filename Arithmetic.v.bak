@@ -12,8 +12,6 @@ output reg C,Z,N,V,P,Af
 reg [Width:0] temp;
 reg overflow;
 
-//reg aux_carry;
-
 always @(*) begin
 
 case(F)

@@ -10,120 +10,122 @@ z2
 cModel Technology
 dC:/intelFPGA/20.1/NTI Verilog/Day5
 vALU
-Z0 !s110 1764341756
+Z0 !s110 1764350763
 !i10b 1
-!s100 X6fZ0YSU=lB6^ikL^86oA2
+!s100 ??l_NPK6PUJVCdR=zN^;;3
 Z1 !s11b Dg1SIo80bB@j0V0VzS_@n1
-IV9F7<hC?_YVF9E1JSJ=TD0
+IVAM^b@39j@0OooQm<8W[D0
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 Z3 dC:/Users/Eng.Basel/Desktop/MicroProcessor Project
-w1764339621
-8ALU.v
-FALU.v
-!i122 131
-L0 1 117
+w1764350754
+8C:/Users/Eng.Basel/Desktop/MicroProcessor Project/ALU.v
+FC:/Users/Eng.Basel/Desktop/MicroProcessor Project/ALU.v
+!i122 135
+L0 1 125
 Z4 OV;L;2020.1;71
 r1
 !s85 0
 31
-Z5 !s108 1764341756.000000
-!s107 ALU_TB.v|ALU.v|
-Z6 !s90 -reportprogress|300|ALU.v|ALU_TB.v|
+Z5 !s108 1764350763.000000
+!s107 C:/Users/Eng.Basel/Desktop/MicroProcessor Project/ALU.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Eng.Basel/Desktop/MicroProcessor Project/ALU.v|
 !i113 1
+Z6 o-work work
 Z7 tCvgOpt 0
 n@a@l@u
 vALU_tb
 R0
 !i10b 1
-!s100 ideeOBMKK6WaQ7YU9a=X03
+!s100 bU96Fm1UDV@RgzVWY^CBB3
 R1
-IVBBGlCV@O0m>_d:O7Lf390
+I6cNDXP^WRQZNLzO;0835;3
 R2
 R3
-w1764341753
-8ALU_TB.v
-FALU_TB.v
-!i122 131
-L0 4 39
+w1764350760
+8C:/Users/Eng.Basel/Desktop/MicroProcessor Project/ALU_TB.v
+FC:/Users/Eng.Basel/Desktop/MicroProcessor Project/ALU_TB.v
+!i122 136
+L0 4 41
 R4
 r1
 !s85 0
 31
 R5
-Z8 !s107 ALU_TB.v|ALU.v|
-R6
+!s107 C:/Users/Eng.Basel/Desktop/MicroProcessor Project/ALU_TB.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Eng.Basel/Desktop/MicroProcessor Project/ALU_TB.v|
 !i113 1
+R6
 R7
 n@a@l@u_tb
 vArithmetic
-!s110 1764341754
+R0
 !i10b 1
-!s100 UmSA;[1zO`@oCD@8;D8<31
+!s100 ^^Of6lN;k1;B6OiVLn=:Q1
 R1
-IOSP3W5`:>IgYlRSRzo[1=3
+IVSDMT?aI>YW?m@k^Hdl]a0
 R2
 R3
-w1764340029
+w1764350729
 8C:/Users/Eng.Basel/Desktop/MicroProcessor Project/Arithmetic.v
 FC:/Users/Eng.Basel/Desktop/MicroProcessor Project/Arithmetic.v
-!i122 130
-L0 1 109
+!i122 132
+L0 1 111
 R4
 r1
 !s85 0
 31
-!s108 1764341754.000000
+R5
 !s107 C:/Users/Eng.Basel/Desktop/MicroProcessor Project/Arithmetic.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Eng.Basel/Desktop/MicroProcessor Project/Arithmetic.v|
 !i113 1
-Z9 o-work work
+R6
 R7
 n@arithmetic
 vLogic
-!s110 1764339645
+R0
 !i10b 1
-!s100 U8h3W6RzfIaPZ06F<LUSW3
+!s100 fI^m1^0RIKPh:VSd^0:8S0
 R1
-IK^B?97W0zL@0RZWMIFoh51
+Ijil7JcY2Ph?Ih7XQI06Fg3
 R2
 R3
-w1764339609
+w1764350736
 8C:/Users/Eng.Basel/Desktop/MicroProcessor Project/Logic.v
 FC:/Users/Eng.Basel/Desktop/MicroProcessor Project/Logic.v
-!i122 110
-L0 1 53
+!i122 133
+L0 1 101
 R4
 r1
 !s85 0
 31
-!s108 1764339645.000000
+R5
 !s107 C:/Users/Eng.Basel/Desktop/MicroProcessor Project/Logic.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Eng.Basel/Desktop/MicroProcessor Project/Logic.v|
 !i113 1
-R9
+R6
 R7
 n@logic
 vShift
-!s110 1764340031
+R0
 !i10b 1
-!s100 aG3Vc@^IEhheTU1`PKk5=3
+!s100 :6[e:h=do:?Ya?O5OFe>30
 R1
-IeMmDCN2haCMc>EFXiDfCc0
+IC<DTkbMAo;XUYeJT0ELXf1
 R2
 R3
-w1764339886
+w1764350743
 8C:/Users/Eng.Basel/Desktop/MicroProcessor Project/Shift.v
 FC:/Users/Eng.Basel/Desktop/MicroProcessor Project/Shift.v
-!i122 114
-L0 1 68
+!i122 134
+L0 1 63
 R4
 r1
 !s85 0
 31
-!s108 1764340031.000000
+R5
 !s107 C:/Users/Eng.Basel/Desktop/MicroProcessor Project/Shift.v|
 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Eng.Basel/Desktop/MicroProcessor Project/Shift.v|
 !i113 1
-R9
+R6
 R7
 n@shift

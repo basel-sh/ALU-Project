@@ -1,10 +1,13 @@
-module ALU#(parameter Width=16)(
-input   [Width-1:0] A,B,
-input        Cin,
-input  [4:0] F,                 // F[4:3] -> block select, lower bits -> sub-op
-output reg  [Width-1:0] Out,
-output reg  [5:0] Status
+module ALU
+#(parameter Width=16)
+(
+	input       [Width-1:0] A,B,
+	input       Cin,
+	input       [4:0] F,                 // F[4:3] -> block select, lower bits -> sub-op
+	output reg  [Width-1:0] Out,
+	output reg  [5:0] Status
 );
+
 // Registers for the Flags Used
 reg        C,Z,N,V,P,Af,Cout;
 
@@ -65,49 +68,54 @@ Shift#(.Width(Width)) U_SHIFT (
 
 always@(*) begin
     case (F[4:3])
-        2'b00: begin
-            // Arithmetic operations
-            Out = arith_out;
-            C   = arith_C;
-            Z   = arith_Z;
-            N   = arith_N;
-            V   = arith_V;
-            P   = arith_P;
-            Af  = arith_Af;
+        2'b00: 
+	begin
+        	// Arithmetic operations
+        	Out = arith_out;
+        	C   = arith_C;
+        	Z   = arith_Z;
+            	N   = arith_N;
+            	V   = arith_V;
+            	P   = arith_P;
+            	Af  = arith_Af;
         end
-
-        2'b01: begin
-            // Logic operations
-            Out = logic_out;
-            C   = 1'b0;
-            Z   = logic_Z;
-            N   = logic_N;
-            V   = 1'b0;
-            P   = logic_P;
-            Af  = 1'b0;
+////////////////////////////////////////////////////////////
+        2'b01: 
+	begin
+            	// Logic operations
+            	Out = logic_out;
+            	C   = 1'b0;
+            	Z   = logic_Z;
+            	N   = logic_N;
+            	V   = 1'b0;
+            	P   = logic_P;
+            	Af  = 1'b0;
         end
-
-        2'b10: begin
-            // Shift operations
-            Out = shift_out;
-            C   = shift_C;
-            Z   = shift_Z;
-            N   = shift_N;
-            V   = 1'b0;
-            P   = shift_P;
-            Af  = 1'b0;
+////////////////////////////////////////////////////////////
+        2'b10: 
+	begin
+            	// Shift operations
+            	Out = shift_out;
+            	C   = shift_C;
+            	Z   = shift_Z;
+            	N   = shift_N;
+            	V   = 1'b0;
+            	P   = shift_P;
+           	Af  = 1'b0;
         end
-
-        default: begin
-            // Unused opcodes ------> everything zero
-            Out = {Width{1'b0}};
-            C   = 1'b0;
-            Z   = 1'b0;
-            N   = 1'b0;
-            V   = 1'b0;
-            P   = 1'b0;
-            Af  = 1'b0;
+////////////////////////////////////////////////////////////
+        default: 
+	begin
+            	// Unused opcodes ------> everything zero
+            	Out = {Width{1'b0}};
+            	C   = 1'b0;
+            	Z   = 1'b0;
+            	N   = 1'b0;
+            	V   = 1'b0;
+            	P   = 1'b0;
+            	Af  = 1'b0;
         end
+////////////////////////////////////////////////////////////
     endcase
 
     Cout   = C;
