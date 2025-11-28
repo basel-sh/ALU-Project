@@ -21,88 +21,43 @@ always@(*) begin
 	begin
 		Out = A & B;
 		Z = ~|Out;		//Zero Flag
-        	N = Out[Width-1];	//Negative Flag
-        	P = ~^Out;		//Parity Flag
+        N = Out[Width-1];	//Negative Flag
+        P = ~^Out;		//Parity Flag
 	end
 ////////////////////////////////////////////////////////////
         3'b001:					//OR 
 	begin
 		Out = A | B;
 		Z = ~|Out;		//Zero Flag
-        	N = Out[Width-1];	//Negative Flag
-        	P = ~^Out;		//Parity Flag
+        N = Out[Width-1];	//Negative Flag
+        P = ~^Out;		//Parity Flag
 	end
 ////////////////////////////////////////////////////////////
         3'b010:					//XOR 
 	begin
 		Out = A ^ B;		
 		Z = ~|Out;		//Zero Flag
-        	N = Out[Width-1];	//Negative Flag
-        	P = ~^Out;		//Parity Flag
+        N = Out[Width-1];	//Negative Flag
+        P = ~^Out;		//Parity Flag
 	end
 ////////////////////////////////////////////////////////////
         3'b011:					//NOT 
 	begin
 		Out = ~A;		
 		Z = ~|Out;		//Zero Flag
-        	N = Out[Width-1];	//Negative Flag
-        	P = ~^Out;		//Parity Flag
+        N = Out[Width-1];	//Negative Flag
+        P = ~^Out;		//Parity Flag
 	end
 ////////////////////////////////////////////////////////////
         default: 
 	begin
 		Out = 1'b0;		
 		Z = 1'b0;		//Zero Flag
-        	N = 1'b0;		//Negative Flag
-        	P = 1'b0;		//Parity Flag
+        N = 1'b0;		//Negative Flag
+        P = 1'b0;		//Parity Flag
 	end
 ////////////////////////////////////////////////////////////
     endcase
 
 end
-endmodule
-always@(*) begin
-    case(F)
-        3'b000: 
-	begin
-	Out = A & B;
-	Z = ~|Out;
-        N = Out[Width-1];
-        P = ~^Out;
-	end
-
-        3'b001: 
-	begin
-	Out = A | B;
-	Z = ~|Out;
-        N = Out[Width-1];
-        P = ~^Out;
-	end
-
-        3'b010: 
-	begin
-	Out = A ^ B;
-	Z = ~|Out;
-        N = Out[Width-1];
-        P = ~^Out;
-	end
-        3'b011: 
-	begin
-	Out = ~A;
-	Z = ~|Out;
-        N = Out[Width-1];
-        P = ~^Out;
-	end
-        default: 
-	begin
-	Out = 1'b0;
-	Z = 1'b0;
-        N = 1'b0;
-        P = 1'b0;
-	end
-	
-    endcase
-
-end
-
 endmodule
